@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>websocket</title>
+</head>
+<body>
+
+<input type="text" id="name">
+<div id="aas"></div>
+<script type="text/javascript">
+	var sock  = new WebSocket("ws://localhost:5001");
+
+
+var aaa;
+document.getElementById("name").addEventListener("change",function(){
+
+aaa = this.value;
+
+sock.onmessage = function(event){
+	
+document.getElementById("aas").innerHTML = document.getElementById("aas").innerHTML + event.data;
+console.log(event.data);
+
+}
+sock.send("hi"+aaa);
+})
+
+
+</script>
+
+
+
+</body>
+</html>
